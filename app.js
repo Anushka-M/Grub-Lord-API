@@ -36,6 +36,8 @@ var logout = require('./routes/logout');
 var homePage = require('./routes/homePage');
 var resetPassword = require('./routes/resetPassword');
 var postRecipe = require('./routes/postRecipe');
+var fetchRecipe = require('./routes/fetchRecipe');
+var fetchTemporaryResult = require('./routes/fetchTemporaryResult');
 var forgotPasswordSendEmail = require('./routes/forgotPasswordSendEmail');
 
 app.use('/', index);
@@ -47,6 +49,8 @@ app.use('/homePage', homePage);
 app.use('/logout', logout);
 app.use('/resetpassword', resetPassword);
 app.use('/postRecipe', postRecipe);
+app.use('/fetchRecipe', fetchRecipe);
+app.use('/fetchTemporaryResult', fetchTemporaryResult);
 app.use('/forgotPasswordSendEmail', forgotPasswordSendEmail);
 
 // catch 404 and forward to error handler

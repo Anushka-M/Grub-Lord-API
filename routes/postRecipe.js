@@ -12,18 +12,17 @@ router.post('/', upload.single('image'), function (req, res, next) {
         return;
     }
     
-    
 
     var ingredients = {};
     const path = req.file.path;
-    const body = req.body; 
+    const body = req.body;
     const keys = Object.keys(req.body);
     const steps = req.body.steps;
-    const recipeName = req.body.recipeName;
-
+    const recipeName = (req.body.recipeName).toLowerCase();
 
     keys.forEach(function(element) {
         if(body[element] == '') {
+            res.statusCode(400);
             res.end("One or more fields is empty, stop being a dick!");
             return;
         }
@@ -57,7 +56,6 @@ router.post('/', upload.single('image'), function (req, res, next) {
             res.end("Your recipe has been posted");
             return;
         }
-        
         res.end("Error is", err);
     });
     
