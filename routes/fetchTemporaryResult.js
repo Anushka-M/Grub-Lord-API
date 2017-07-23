@@ -5,6 +5,12 @@ var db = require('../con_db');
 router.get('/', function (req, res, next) {
     
     const keyword = req.query.keyword;
+
+    if(keyword == '') {
+        res.end('');
+        return; 
+    }
+
     console.log(keyword);
     var re = new RegExp('^' + keyword);
     console.log(re);
@@ -13,9 +19,8 @@ router.get('/', function (req, res, next) {
             console.log("Nothing found");
             return;
         }
-        console.log("somthing found");
-        console.log(response);
-    });
+        res.json(response);
+    }).limit(10).sort("recipeName");
 });
 
 
